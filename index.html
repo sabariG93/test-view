@@ -1,405 +1,426 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hightable</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap");
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #2f4858;
-        font-family: "Epilogue", sans-serif;
-        overflow-x: hidden;
-      }
-      #root {
-        width: 100%;
-        float: left;
-        overflow-x: hidden;
-      }
-      .PageContainer {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 80px 24px;
-      }
-      .BookSpotCard {
-        width: 480px;
-        position: relative;
-        background-color: #2f4858;
-      }
-      .cardImgContainer {
-        width: 100%;
-        float: left;
-        position: relative;
-      }
-      .bannerImg {
-        width: 100%;
-        float: left;
-      }
-      .cardImgContainer svg {
-        position: absolute;
-        top: -24px;
-        left: -20px;
-        right: -2px;
-        height: auto;
-        width: auto;
-      }
-      .cardImgContainer::before {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        background-color: #2f4858;
-        left: -30px;
-        bottom: -30px;
-        border-radius: 100%;
-      }
-      .cardImgContainer::after {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        background-color: #2f4858;
-        right: -30px;
-        bottom: -30px;
-        border-radius: 100%;
-      }
-      .CardContentContainer {
-        width: 100%;
-        float: left;
-        padding: 15px 0;
-        background-color: #fff;
-      }
-      .CardTitle {
-        width: 100%;
-        float: left;
-        text-align: center;
-        font-size: 22px;
-        color: #000000;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
-      .LocationSet {
-        width: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        margin-bottom: 12px;
-        padding: 0 3.5rem;
-      }
-      .LocationSet .UserImg {
-        width: 20px;
-        height: 20px;
-        margin-right: 0;
-      }
-      .LocationSet span {
-        font-size: 15px;
-        color: #121212;
-        line-height: 20px;
-        font-weight: 400;
-        text-align: center;
-      }
-      .LocationSet svg {
-        margin-right: 10px;
-      }
-      .UserInfoSet {
-        width: 100%;
-        float: left;
-        padding: 25px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: dashed 1px #d5cdb2;
-        border-bottom: dashed 1px #d5cdb2;
-        margin-top: 13px;
-      }
-      .UserImg {
-        width: 38px;
-        height: 38px;
-        border-radius: 100%;
-        margin-right: 12px;
-      }
-      .UserNameSet {
-        display: flex;
-        flex-direction: column;
-        font-size: 16px;
-        color: #121212;
-        line-height: 21px;
-        font-weight: 300;
-        margin-right: 10px;
-      }
-      .UserNameSet span {
-        max-width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .UserNameSet strong {
-        font-size: 12px;
-        color: #c08036;
-        font-weight: 400;
-        line-height: 16px;
-      }
-      .reviewTag {
-        padding: 6px 12px;
-        border: solid 1px #f1eae0;
-        border-radius: 34px;
-        font-size: 12px;
-        color: #c08036;
-        font-weight: 500;
-      }
-      .reviewTag svg {
-        margin-right: 4px;
-      }
-      .CardTextContent {
-        width: 100%;
-        float: left;
-        padding: 25px 70px;
-        color: #121212;
-        font-size: 14px;
-        text-align: center;
-        font-weight: 300;
-        line-height: 19px;
-      }
-      .CardBookBtnContainer {
-        width: 100%;
-        float: left;
-        padding: 0 10px;
-      }
-      .CardBookBtn {
-        width: 100%;
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 24px;
-        padding: 19px 20px;
-        background: linear-gradient(
-          180deg,
-          #094d59 0%,
-          #020d0f 6%,
-          #020d0f 95.83%,
-          #000607 100%,
-          #000303 100%
-        );
-        border-radius: 4px;
-        border: none;
-        box-shadow: none;
-        outline: none;
-      }
-      .datewithtime {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-      }
-      .datewithtime #dot {
-        font-size: 20px;
-        margin-left: 5px;
-        margin-right: 5px;
-      }
-
-      @media (max-width: 480px) {
+        @import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap");
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2f4858;
+            font-family: "Epilogue", sans-serif;
+            overflow-x: hidden;
+        }
+        #root {
+            width: 100%;
+            float: left;
+            overflow-x: hidden;
+        }
         .PageContainer {
-          padding: 24px 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
         }
         .BookSpotCard {
-          width: 100%;
+            width: 480px;
+            position: relative;
+            background-color: #2f4858;
         }
-        .CardTextContent {
-          padding: 25px 24px;
+        .cardImgContainer {
+            width: 100%;
+            float: left;
+            position: relative;
         }
-        .cardImgContainer::after {
-          width: 50px;
-          height: 50px;
-          right: -30px;
-          bottom: -25px;
-        }
-        .cardImgContainer::before {
-          width: 50px;
-          height: 50px;
-          left: -30px;
-          bottom: -25px;
+        .bannerImg {
+            width: 100%;
+            float: left;
         }
         .cardImgContainer svg {
-          top: -24px;
-          left: -30px;
-          right: 0;
-          height: auto;
-          width: auto;
+            position: absolute;
+            top: -24px;
+            left: -20px;
+            right: -2px;
+            height: auto;
+            width: auto;
         }
-      }
+        .cardImgContainer::before,
+        .cardImgContainer::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #2f4858;
+            border-radius: 100%;
+        }
+        .cardImgContainer::before {
+            left: -30px;
+            bottom: -30px;
+        }
+        .cardImgContainer::after {
+            right: -30px;
+            bottom: -30px;
+        }
+        .CardContentContainer {
+            width: 100%;
+            float: left;
+            padding: 15px 0;
+            background-color: #fff;
+        }
+        .CardTitle {
+            width: 100%;
+            float: left;
+            text-align: center;
+            font-size: 22px;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .LocationSet {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            margin-bottom: 12px;
+            padding: 0 3.5rem;
+        }
+        .LocationSet .UserImg {
+            width: 20px;
+            height: 20px;
+            margin-right: 0;
+        }
+        .LocationSet span {
+            font-size: 15px;
+            color: #121212;
+            line-height: 20px;
+            font-weight: 400;
+            text-align: center;
+        }
+        .LocationSet svg {
+            margin-right: 10px;
+        }
+        .UserInfoSet {
+            width: 100%;
+            float: left;
+            padding: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: dashed 1px #d5cdb2;
+            border-bottom: dashed 1px #d5cdb2;
+            margin-top: 13px;
+        }
+        .UserImg {
+            width: 38px;
+            height: 38px;
+            border-radius: 100%;
+            margin-right: 12px;
+        }
+        .UserNameSet {
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            color: #121212;
+            line-height: 21px;
+            font-weight: 300;
+            margin-right: 10px;
+        }
+        .UserNameSet span {
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .UserNameSet strong {
+            font-size: 12px;
+            color: #c08036;
+            font-weight: 400;
+            line-height: 16px;
+        }
+        .reviewTag {
+            padding: 6px 12px;
+            border: solid 1px #f1eae0;
+            border-radius: 34px;
+            font-size: 12px;
+            color: #c08036;
+            font-weight: 500;
+        }
+        .reviewTag svg {
+            margin-right: 4px;
+        }
+        .CardTextContent {
+            width: 100%;
+            float: left;
+            padding: 25px 70px;
+            color: #121212;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 300;
+            line-height: 19px;
+        }
+        .CardBookBtnContainer {
+            width: 100%;
+            float: left;
+            padding: 0 10px;
+        }
+        .CardBookBtn {
+            width: 100%;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+            padding: 19px 20px;
+            background: linear-gradient(
+                180deg,
+                #094d59 0%,
+                #020d0f 6%,
+                #020d0f 95.83%,
+                #000607 100%,
+                #000303 100%
+            );
+            border-radius: 4px;
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+        .datewithtime {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+        .datewithtime #dot {
+            font-size: 20px;
+            margin: 0 5px;
+        }
+        @media (max-width: 480px) {
+            .PageContainer {
+                padding: 24px;
+            }
+            .BookSpotCard {
+                width: 100%;
+            }
+            .CardTextContent {
+                padding: 25px 24px;
+            }
+            .cardImgContainer::after,
+            .cardImgContainer::before {
+                width: 50px;
+                height: 50px;
+                bottom: -25px;
+            }
+            .cardImgContainer::before {
+                left: -30px;
+            }
+            .cardImgContainer::after {
+                right: -30px;
+            }
+            .cardImgContainer svg {
+                top: -24px;
+                left: -30px;
+                right: 0;
+                height: auto;
+                width: auto;
+            }
+        }
+        .hidden {
+            display: none;
+        }
+        .nodataLogo {
+            width: 188px;
+            height: 200px;
+            margin-top: -110px;
+            position: relative;
+        }
+        .noDataText {
+            width: 100%;
+            font-size: 24px;
+            padding: 20px 40px;
+            text-align: center;
+            line-height: 29px;
+            font-weight: 400;
+            margin-top: 30px;
+        }
+        .noDataText.bold {
+            font-weight: 700;
+            margin-top: 0;
+        }
     </style>
-  </head>
-  <body>
-    <div class="PageContainer">
-      <div class="BookSpotCard">
+</head>
+<body>
+<div class="PageContainer">
+    <div class="BookSpotCard">
         <div class="cardImgContainer">
-          <MaskImg />
-          <img
-            class="bannerImg"
-            src="./images/no_data.png"
-            alt="Banner Image"
-          />
+            <img class="bannerImg" src="./images/no_data.png" alt="Banner Image" />
         </div>
-        <div class="CardContentContainer">
-          <h3 class="CardTitle"></h3>
-          <div class="LocationSet">
-            <img
-              class="UserImg"
-              src="./images/location.svg"
-              alt="Profile Image"
-            />
-            <span id="address"></span>
-          </div>
-          <div class="LocationSet">
-            <Clock />
-            <div class="datewithtime">
-              <span id="date"></span>
-              <span id="dot">&#x2022;</span>
-              <span id="time"></span>
+        <div id="myDiv">
+            <div class="CardContentContainer">
+                <h3 class="CardTitle"></h3>
+                <div class="LocationSet">
+                    <img class="UserImg" src="./images/location.svg" alt="Location Icon" />
+                    <span id="address"></span>
+                </div>
+                <div class="LocationSet">
+                    <div class="datewithtime">
+                        <span id="date"></span>
+                        <span id="dot">&#x2022;</span>
+                        <span id="time"></span>
+                    </div>
+                </div>
+                <div class="UserInfoSet">
+                    <img class="UserImg" id="userprofile" src="./images/user.png" alt="Profile Image" />
+                    <div class="UserNameSet">
+                        <span id="username"></span>
+                        <strong id="tablehosted"></strong>
+                    </div>
+                    <span class="reviewTag">
+                        <img class="ratingImg" src="./images/star.svg" alt="Rating Star" />
+                        <span id="reviews"></span>
+                    </span>
+                </div>
+                <div class="CardTextContent"></div>
+                <div class="CardBookBtnContainer">
+                    <button onclick="triggerAppOpen()" class="CardBookBtn">
+                        Book your spot
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="UserInfoSet">
-            <img
-              class="UserImg"
-              id="userprofile"
-              src="./images/user.png"
-              alt="Profile Image"
-            />
-            <div class="UserNameSet">
-              <span id="username"></span>
-              <strong id="tablehosted"></strong>
-            </div>
-            <span class="reviewTag">
-              <img
-                class="ratingImg"
-                src="./images/star.svg"
-                alt="Profile Image"
-              />
-              <span id="reviews"></span>
-            </span>
-          </div>
-          <div class="CardTextContent"></div>
-          <div class="CardBookBtnContainer">
-            <button onclick="triggerAppOpen()" class="CardBookBtn">
-              Book your spot
-            </button>
-          </div>
         </div>
-      </div>
+        <div id="myDivTwo" class="hidden">
+            <div class="CardContentContainer">
+                <div class="LocationSet">
+                    <img class="nodataLogo" src="./images/logo.png" alt="No Data Logo" />
+                </div>
+                <div class="noDataText">
+                    The table you're looking for is currently unavailable.
+                </div>
+                <div class="noDataText bold">
+                    We apologize for the inconvenience.
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <script>
-      function formatDate(date) {
-        var dateTimeString = date;
-        var dateTimeParts = dateTimeString.split(" ");
-        var dateParts = dateTimeParts[0].split("-");
-        var day = dateParts[0];
-        var month = dateParts[1];
-        var year = dateParts[2];
+<script>
+function formatDate(date) {
+    // Create a new Date object from the ISO date string
+    const dateObj = new Date(date);
 
-        var months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
-        var monthName = months[parseInt(month, 10) - 1];
-        var formattedDate =
-          day + getOrdinalSuffix(day) + " " + monthName + " " + year;
+    // Check if the date object is valid
+    if (isNaN(dateObj.getTime())) {
+        return { formattedDate: 'Invalid date', formattedTime: 'Invalid time' };
+    }
 
-        var timeParts = dateTimeParts[1].split(":");
-        var hours = parseInt(timeParts[0], 10);
-        var minutes = timeParts[1];
+    // Extract date parts
+    const day = dateObj.getDate();
+    const month = dateObj.getMonth(); // 0-based index
+    const year = dateObj.getFullYear();
+    
+    // Get month names
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const monthName = months[month];
+    const formattedDate = `${day}${getOrdinalSuffix(day)} ${monthName} ${year}`;
 
-        var ampm = hours >= 12 ? "pm" : "am";
-        hours = hours % 12;
-        hours = hours ? hours : 12;
+    // Extract time parts
+    const hours = dateObj.getHours();
+    const minutes = dateObj.getMinutes();
 
-        var formattedTime = hours + ":" + minutes + " " + ampm;
-        console.log(formattedDate + " • " + formattedTime);
-        return {formattedDate, formattedTime};
-      }
-      function getOrdinalSuffix(day) {
-        if (day >= 11 && day <= 13) {
-          return "th";
-        }
-        switch (day % 10) {
-          case 1:
+    // Convert to 12-hour format
+    const ampm = hours >= 12 ? "pm" : "am";
+    const formattedHours = hours % 12 || 12;
+    const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+
+    return { formattedDate, formattedTime };
+}
+
+function getOrdinalSuffix(day) {
+    if (day >= 11 && day <= 13) {
+        return "th";
+    }
+    switch (day % 10) {
+        case 1:
             return "st";
-          case 2:
+        case 2:
             return "nd";
-          case 3:
+        case 3:
             return "rd";
-          default:
+        default:
             return "th";
-        }
-      }
-      var params = Object.fromEntries(
-        new URLSearchParams(window.location.search)
-      );
-      function fetchData() {
-        fetch("https://dev.hightable.ai/tables/view-web?id=" + params.id)
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Fetching data", data);
-            const details = data?.details;
+    }
+}
+    const params = Object.fromEntries(new URLSearchParams(window.location.search));
+    let state = false;
+    
+    const div = document.getElementById("myDiv");
+    const divTwo = document.getElementById("myDivTwo");
 
-            document.querySelector(".CardTextContent").innerHTML =
-              data.details.description;
-              console.log("datewithtime",formatDate(
-              details.event_date
-            ), details.event_date)
-            const dateTime =  formatDate(details.event_date);
-            document.querySelector("#date").innerHTML = dateTime.formattedDate;
-            document.querySelector("#time").innerHTML = dateTime.formattedTime;
-            document.querySelector("#address").innerHTML = details.address;
-            document.querySelector("#username").innerHTML =
-              details.user_data.first_name + " " + details.user_data.last_name;
-            document.querySelector(".CardTitle").innerHTML = details.title;
-            document.querySelector(".bannerImg").src = details.media;
-            document.querySelector("#userprofile").src =
-              details.user_data.photo || "./images/user.png";
-            document.querySelector("#tablehosted").innerHTML =
-              details.total_table_count + " " + "Tables Hosted";
-            document.querySelector("#reviews").innerHTML = details.user_data
-              .reviews
-              ? details.user_data.reviews
-              : 0;
-          })
-          .catch((error) => console.error("Error fetching data:", error));
-      }
+    function fetchData() {
+    console.log("Query parameters:", params);
+    if (!params.id) {
+        console.error("Missing id parameter");
+        divTwo.classList.remove('hidden');
+        div.classList.add('hidden');
+        return;
+    }
 
-      fetchData();
+    fetch("http://192.168.1.24:1337/tables/view-web?id=" + params.id)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Fetched data:", data);
+            div.classList.remove('hidden');
+            divTwo.classList.add('hidden');
+            
+            const details = data.details;
+            console.log("Event date:", details.event_date); // Check this value
+            if (details.event_date) {
+                const dateTime = formatDate(details.event_date);
+                document.querySelector("#date").innerHTML = dateTime.formattedDate;
+                document.querySelector("#time").innerHTML = dateTime.formattedTime;
+            } else {
+                document.querySelector("#date").innerHTML = "Date not available";
+                document.querySelector("#time").innerHTML = "Time not available";
+            }
+            document.querySelector(".CardTextContent").innerHTML = details.description || 'No description available';
+            document.querySelector("#address").innerHTML = details.address || 'No address available';
+            document.querySelector("#username").innerHTML = (details.user_data.first_name + " " + details.user_data.last_name) || 'No user data';
+            document.querySelector(".CardTitle").innerHTML = details.title || 'No title available';
+            document.querySelector(".bannerImg").src = details.media || './images/no_data.png';
+            document.querySelector("#userprofile").src = details.user_data.photo || './images/user.png';
+            document.querySelector("#tablehosted").innerHTML = (details.total_table_count || 0) + " Tables Hosted";
+            document.querySelector("#reviews").innerHTML = details.user_data.reviews || 0;
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+            divTwo.classList.remove('hidden');
+            div.classList.add('hidden');
+        })
+        .finally(() => {
+            console.log("Fetch operation completed.");
+        });
+}
 
-      var fallbackToStore = function () {
-        window.location.replace(
-          "https://play.google.com/store/apps/details?id=packgename"
-        );
-      };
-      var openApp = function () {
+    fetchData();
+
+    function openApp() {
         let redirect_url = `https://dev.hightable.ai/booking/screen?id=${params.id}&createdby=${params.createdby}`;
-
         window.location.replace(redirect_url);
-      };
-      var triggerAppOpen = function () {
+    }
+
+    function triggerAppOpen() {
         openApp();
-        // setTimeout(fallbackToStore, 700);
-      };
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>
