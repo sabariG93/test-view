@@ -370,7 +370,7 @@ function getOrdinalSuffix(day) {
         return;
     }
 
-    fetch("http://192.168.1.24:1337/tables/view-web?id=" + params.id)
+    fetch("https://dev.hightable.ai/tables/view-web?id=" + params.id)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
